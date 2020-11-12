@@ -1,0 +1,137 @@
+<Activity mc:Ignorable="sap sap2010" x:Class="Main" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:s="clr-namespace:SVA_SECURITY_Activities;assembly=SVA.SECURITY.Activities" xmlns:s1="clr-namespace:System;assembly=mscorlib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:ss="clr-namespace:System.Security;assembly=mscorlib" xmlns:this="clr-namespace:" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property Name="EmailCredential" Type="InArgument(x:String)">
+      <x:Property.Attributes>
+        <RequiredArgumentAttribute />
+      </x:Property.Attributes>
+    </x:Property>
+    <x:Property sap2010:Annotation.AnnotationText="Comma separated email addressess" Name="AddressedTo" Type="InArgument(x:String)">
+      <x:Property.Attributes>
+        <RequiredArgumentAttribute />
+      </x:Property.Attributes>
+    </x:Property>
+    <x:Property Name="Subject" Type="InArgument(x:String)">
+      <x:Property.Attributes>
+        <RequiredArgumentAttribute />
+      </x:Property.Attributes>
+    </x:Property>
+    <x:Property Name="Body" Type="InArgument(x:String)" />
+    <x:Property Name="Attachments" Type="InArgument(scg:IEnumerable(x:String))" />
+    <x:Property Name="Port" Type="InArgument(x:Int32)">
+      <x:Property.Attributes>
+        <RequiredArgumentAttribute />
+      </x:Property.Attributes>
+    </x:Property>
+    <x:Property Name="SMTPServer" Type="InArgument(x:String)">
+      <x:Property.Attributes>
+        <RequiredArgumentAttribute />
+      </x:Property.Attributes>
+    </x:Property>
+    <x:Property sap2010:Annotation.AnnotationText="Comma Separated email addressess" Name="CCTo" Type="InArgument(x:String)" />
+    <x:Property sap2010:Annotation.AnnotationText="Comma Separated email addressess" Name="BccTo" Type="InArgument(x:String)" />
+  </x:Members>
+  <this:Main.Attachments>
+    <InArgument x:TypeArguments="scg:IEnumerable(x:String)" />
+  </this:Main.Attachments>
+  <mva:VisualBasic.Settings>
+    <x:Null />
+  </mva:VisualBasic.Settings>
+  <sap:VirtualizedContainerService.HintSize>947,984</sap:VirtualizedContainerService.HintSize>
+  <sap2010:WorkflowViewState.IdRef>ActivityBuilder_1</sap2010:WorkflowViewState.IdRef>
+  <TextExpression.NamespacesForImplementation>
+    <scg:List x:TypeArguments="x:String" Capacity="46">
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Activities.Validation</x:String>
+      <x:String>System.Activities.XamlIntegration</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>Microsoft.VisualBasic.Activities</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+      <x:String>System.Windows.Markup</x:String>
+      <x:String>System.Security</x:String>
+      <x:String>System.Net</x:String>
+      <x:String>SVA_SECURITY_Activities</x:String>
+      <x:String>UiPath.Framework.Activities</x:String>
+    </scg:List>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="34">
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>PresentationCore</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
+      <AssemblyReference>System.ValueTuple</AssemblyReference>
+      <AssemblyReference>System.ServiceModel</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
+      <AssemblyReference>SVA.SECURITY.Activities</AssemblyReference>
+      <AssemblyReference>SVA.SECURITY.Activities_Expressions_3730396</AssemblyReference>
+      <AssemblyReference>SVA.SECURITY.Activities_Expressions_48411444</AssemblyReference>
+      <AssemblyReference>SVA.SECURITY.Activities_Expressions_50571508</AssemblyReference>
+      <AssemblyReference>SVA.SECURITY.Activities_Expressions_66845251</AssemblyReference>
+    </scg:List>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence sap2010:Annotation.AnnotationText="This mail activity is more helpful than the regular Send SMTP Message activity because it takes in the Login Credentials as a Credential asset, rather than taking a password in plain text, which is very insecure and hence not a recommended way.&#xA;&#xA;If any exception is encountered, it throws the exception with a custom message plus exception.message.&#xA;&#xA;Input:&#xA;Name | Type | Required&#xA;1. EmailCredential: String : Yes&#xA;2. AddressedTo: String: Yes&#xA;3. Subject: String: Yes&#xA;4. Body: String: No&#xA;5. Attachments: System.Collections.Generic.iEnumerable&lt;System.String&gt;: No&#xA;6. Port : Integer: Yes&#xA;7. SMTP Server: String | Yes" DisplayName="Main Sequence to send SMTP Email" sap:VirtualizedContainerService.HintSize="480,879" sap2010:WorkflowViewState.IdRef="Sequence_1">
+    <Sequence.Variables>
+      <Variable x:TypeArguments="x:String" Name="PlainPassword" />
+      <Variable x:TypeArguments="ss:SecureString" Name="SecPassword" />
+      <Variable x:TypeArguments="x:String" Name="Username" />
+    </Sequence.Variables>
+    <sap:WorkflowViewStateService.ViewState>
+      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+        <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+      </scg:Dictionary>
+    </sap:WorkflowViewStateService.ViewState>
+    <s:GetAppCredentials DisplayName="Private: GetAppCredentials" sap:VirtualizedContainerService.HintSize="438,22" sap2010:WorkflowViewState.IdRef="GetAppCredentials_2" in_Credential="[EmailCredential]" out_Password="[SecPassword]" out_Username="[Username]" />
+    <s:SecureStringToString DisplayName="Private: SecureStringToString" sap:VirtualizedContainerService.HintSize="438,22" sap2010:WorkflowViewState.IdRef="SecureStringToString_2" PlainString="[PlainPassword]" SecureString="[SecPassword]" />
+    <TryCatch DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="438,379" sap2010:WorkflowViewState.IdRef="TryCatch_1">
+      <TryCatch.Try>
+        <ui:SendMail From="{x:Null}" MailMessage="{x:Null}" Name="{x:Null}" TimeoutMS="{x:Null}" AttachmentsCollection="[Attachments]" Bcc="[BccTo]" Body="[Body]" Cc="[CCTo]" DisplayName="Send SMTP Mail Message" Email="[Username]" EnableSSL="True" sap:VirtualizedContainerService.HintSize="334,147" sap2010:WorkflowViewState.IdRef="SendMail_1" IsBodyHtml="True" Password="[PlainPassword]" Port="[Port]" SecureConnection="Auto" Server="[SMTPServer]" Subject="[Subject]" To="[AddressedTo]">
+          <ui:SendMail.Files>
+            <scg:List x:TypeArguments="InArgument(x:String)" Capacity="4" />
+          </ui:SendMail.Files>
+        </ui:SendMail>
+      </TryCatch.Try>
+      <TryCatch.Catches>
+        <Catch x:TypeArguments="s1:Exception" sap:VirtualizedContainerService.HintSize="404,22" sap2010:WorkflowViewState.IdRef="Catch`1_1">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <ActivityAction x:TypeArguments="s1:Exception">
+            <ActivityAction.Argument>
+              <DelegateInArgument x:TypeArguments="s1:Exception" Name="exception" />
+            </ActivityAction.Argument>
+            <Throw Exception="[New Exception(&quot;Exception in SendMailBySMTP Acticity:&quot;+Environment.NewLine+exception.Message)]" sap:VirtualizedContainerService.HintSize="200,22" sap2010:WorkflowViewState.IdRef="Throw_1" />
+          </ActivityAction>
+        </Catch>
+      </TryCatch.Catches>
+    </TryCatch>
+  </Sequence>
+</Activity>
